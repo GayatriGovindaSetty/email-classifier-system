@@ -21,14 +21,14 @@ This project provides an API for classifying emails into predefined categories a
 
 ---
 
-## 📁 Project Structure
-├── main.py # FastAPI app
-├── models.py # Model training, loading, prediction
-├── utils.py # PII masking logic
-├── requirements.txt # Dependencies
-├── svm_email_classifier.pkl # Trained SVM model (optional - generated after training)
-├── combined_emails_with_natural_pii.csv # Dataset
-└── README.md
+## 📁 Project Structure </br>
+├── main.py # FastAPI app </br>
+├── models.py # Model training, loading, prediction </br>
+├── utils.py # PII masking logic </br>
+├── requirements.txt # Dependencies </br>
+├── svm_email_classifier.pkl # Trained SVM model (optional - generated after training) </br>
+├── combined_emails_with_natural_pii.csv # Dataset </br>
+└── README.md </br>
 
 ---
 
@@ -59,31 +59,35 @@ uvicorn main:app --reload
 Open your browser and visit:
 http://127.0.0.1:8000/docs
 
-🧪 Example API Request
-POST /classify
+---
 
-Body (JSON):
-{
-  "text": "Hello, my name is John Doe. My Aadhaar number is 1234-5678-9012. This is a work email."
-}
-Response:
-{
-  "category": "work",
-  "masked_text": "Hello, my name is <full_name>. My Aadhaar number is <aadhar_num>. This is a work email."
-}
+🧪 Example API Request</br>
+POST /classify</br>
+
+Body (JSON):</br>
+{</br>
+  "text": "Hello, my name is John Doe. My Aadhaar number is 1234-5678-9012. This is a work email."</br>
+} </br>
+Response:</br>
+{</br>
+  "category": "work",</br>
+  "masked_text": "Hello, my name is <full_name>. My Aadhaar number is <aadhar_num>. This is a work email."</br>
+}</br>
 
 ---
 
-🧬 PII Categories Masked
-Entity	Mask	Detection Pattern Included
-Full Name	            <full_name>	           Yes
-Email Address	        <email>	               Yes
-Phone Number	        <phone_number>	       Yes
-Date of Birth	        <dob>	                 Yes
-Aadhaar Number	      <aadhar_num>	         Yes
-Credit/Debit Card No	<credit_debit_no>	     Yes
-CVV Number	          <cvv_no>	             Yes
-Expiry Date	          <expiry_no>	           Yes
+🧬 PII Categories Masked </br>
+Entity	Mask	Detection Pattern Included </br>
+Full Name	            <full_name>	           Yes </br>
+Email Address	        <email>	               Yes</br>
+Phone Number	        <phone_number>	       Yes</br>
+Date of Birth	        <dob>	                 Yes</br>
+Aadhaar Number	      <aadhar_num>	         Yes</br>
+Credit/Debit Card No	<credit_debit_no>	     Yes</br>
+CVV Number	          <cvv_no>	             Yes</br>
+Expiry Date	          <expiry_no>	           Yes</br>
+
+---
 
 🛰️ Deploying on Hugging Face Spaces
 Go to Hugging Face Spaces
@@ -91,38 +95,37 @@ Go to Hugging Face Spaces
 Click Create new Space
 
 Fill in:
+- Space name (e.g., email-classifier)
 
-Space name (e.g., email-classifier)
+- SDK: Select "FastAPI"
 
-SDK: Select "FastAPI"
+- Upload the following files:
+  - main.py
+  - models.py
+  - utils.py
+  - requirements.txt
+  - combined_emails_with_natural_pii.csv
 
-Upload the following files:
-main.py
-models.py
-utils.py
-requirements.txt
-combined_emails_with_natural_pii.csv
+- Optionally, create .gitattributes to avoid Git tracking issues.
 
-Optionally, create .gitattributes to avoid Git tracking issues.
-
-Wait for the build to complete. Test at:
-https://emailclassifier.hf.space/docs
+- Wait for the build to complete. Test at:
+  - https://emailclassifier.hf.space/docs
 
 ---
 
 🛠️ Tech Stack
-Python 🐍
-Scikit-learn 🤖
-FastAPI ⚡
-Joblib 🧠
-Hugging Face Spaces 
+- Python 🐍
+- Scikit-learn 🤖
+- FastAPI ⚡
+- Joblib 🧠
+- Hugging Face Spaces 
 
 ---
 
 🧩 Requirements
-fastapi
-uvicorn
-scikit-learn
-pandas
-joblib
-python-multipart
+- fastapi
+- uvicorn
+- scikit-learn
+- pandas
+- joblib
+- python-multipart
